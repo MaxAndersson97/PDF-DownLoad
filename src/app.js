@@ -21,11 +21,11 @@ function createApp() {
     app.use(morgan('dev'));
   }
 
-  if (!config.ALLOW_HTTP) {
+  if (config.ALLOW_HTTPS) {
     logger.info('All requests require HTTPS.');
     app.use(requireHttps());
   } else {
-    logger.info('ALLOW_HTTP=true, unsafe requests are allowed. Don\'t use this in production.');
+    logger.info('ALLOW_HTTPS=false, unsafe requests are allowed. Don\'t use this in production.');
   }
 
   if (config.ALLOW_URLS) {
